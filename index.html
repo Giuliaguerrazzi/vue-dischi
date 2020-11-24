@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id='app'>
+        <header class='app-header'>
+            <img src="logo.png" alt="">
+        </header>
+
+        <div class='cds-container'>
+
+            <div class='genre-filter'>
+                Filter by gender: 
+                <select v-model="actualGenre" name="" id=""
+                @change='filterGenre'>
+                    <option value="all">all</option>
+                    <option value="pop">pop</option>
+                    <option value="rock">rock</option>
+                    <option value="metal">metal</option>
+                    <option value="jazz">jazz</option>
+                </select>
+            </div>
+
+            <ul class='cds-list' v-if='cds.length > 0'>
+                <li class='cd' v-for='cd in cds'>
+                    <div class='wrap-image'>
+                        <img :src='cd.poster' :alt='cd.title'>
+                    </div>
+
+                    <h3 class='title'>{{cd.title}}</h3>
+                    <div class='author'> {{cd.author}}</div>
+                    <div class='year'>{{cd.year}}</div>
+                    <div class='genre'>{{cd.genre}}</div>
+                </li>
+            </ul>
+
+            <h2 v-else class='loader'>Loading please wait...</h2>
+        </div>
+    </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script src=" https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
